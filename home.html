@@ -1,0 +1,61 @@
+    <script>
+      // Function to set the language
+      function setLanguage(lang) {
+        try {
+          localStorage.setItem("language", lang);
+        } catch (e) {}
+        document.querySelectorAll(".lang").forEach((el) => el.classList.add("hidden"));
+        document.querySelectorAll(".lang." + lang).forEach((el) => el.classList.remove("hidden"));
+      }
+
+      // Function to toggle the theme
+      function toggleTheme() {
+        const root = document.documentElement;
+        const isCurrentlyDark = root.classList.contains("dark");
+        
+        // Toggle the 'dark' class
+        if (isCurrentlyDark) {
+          root.classList.remove("dark");
+        } else {
+          root.classList.add("dark");
+        }
+        
+        // Get the new state after toggling
+        const isNowDark = root.classList.contains("dark");
+        
+        // Save the new state to local storage
+        try {
+          localStorage.setItem("theme", isNowDark ? "dark" : "light");
+        } catch (e) {}
+
+        // Update the button label
+        const label = document.getElementById("themeLabel");
+        if (label) {
+          label.textContent = isNowDark ? "Light" : "Dark";
+        }
+      }
+
+      // Apply saved settings on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        // Apply the saved language
+        const savedLang = localStorage.getItem("language") || "en";
+        setLanguage(savedLang);
+
+        // Apply the saved theme
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+          if (savedTheme === "dark") {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        }
+
+        // Set the initial theme label text
+        const isDark = document.documentElement.classList.contains("dark");
+        const label = document.getElementById("themeLabel");
+        if (label) {
+          label.textContent = isDark ? "Light" : "Dark";
+        }
+      });
+    </script> 
