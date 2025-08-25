@@ -11,6 +11,29 @@ TaskFlow is a modern one-page web app built with React, TailwindCSS, Javascript,
 - Pricing & Info Sections – Stylish cards to display pricing plans and information elegantly.
 - Custom Fonts & Design – Futuristic Orbitron font with gradient accents and hover effects.
 
+# File Structure
+
+taskflow/
+├── node_modules/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   └── react.svg
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── eslint.config.js
+├── home.html
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+└── vite.config.js
+
  # Getting Started
 ```bash
 1. Clone the repository
